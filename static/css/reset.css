@@ -1,0 +1,320 @@
+@charset "UTF-8";
+
+html {margin:0; padding:0; background:#fff;}
+body {margin:0; padding:0; font-weight:200; font-family:'YoonGothic','SohoGothicPro','맑은 고딕', Malgun Gothic, HelveticaNeue, DroidSans, 'AppleGothic', Helvetica; line-height:1.5; color:#212121; letter-spacing:0; box-sizing:border-box;}
+* {box-sizing:border-box;}
+header, section, nav, article, aside, details, figcaption, figure, hgroup, menu, footer {display:block;}
+div, span, object, iframe, form, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, ol, ul, li, dl, dt, dd, label, input, select, textarea, fieldset, legend, table, caption, thead, tbody, tfoot, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+margin:0; padding:0; border:0; font-size:100%; vertical-align:baseline; background:transparent;}
+h1, h2, h3, h4, h5, h6 {font-size:100%; font-weight:normal;}
+img {border:0; vertical-align:middle;}
+ul,ol,dl,dt,dd,li {list-style:none;}
+table, th, td {border-collapse:collapse; border-spacing:0; font-weight:normal;}
+caption {display:block; text-indent:-9999em; overflow:hidden; height:0; font-size:0; line-height:0;}
+fieldset, blockquote, iframe, button {border:none;}
+
+a {text-decoration:none; margin:0; padding:0; color:inherit; vertical-align:middle;}
+input, select {border:1px solid #eeeeee; font-family:'YoonGothic', '맑은 고딕', Malgun Gothic, HelveticaNeue, DroidSans,'AppleGothic'; vertical-align:middle;}
+input:focus {outline:none;}
+textarea {border:1px solid #eeeeee; padding:30px; font-family:'YoonGothic', sans-serif, '맑은 고딕', Malgun Gothic, HelveticaNeue, DroidSans,'AppleGothic'; vertical-align:middle;}
+button {position:relative; background:none; border:0 none; cursor:pointer; font-family:inherit; margin:0; padding:0; line-height:1;}
+button * { margin:0; padding:0;}
+button::-moz-focus-inner {padding:0; border:0;}
+button:focus {outline:none;}
+select{-webkit-appearance: none; -moz-appearance: none; appearance: none;}
+select::-ms-expand {
+  display: none;
+}
+/* Select Design */
+.selectBox{display:inline-block; vertical-align: top; position: relative;}
+.selectBox>select{width:100%;}
+
+/*
+	- select 박스 구조 > selectBox 클래스에 분기시켜 디자인입히기 -
+	<div class="selectBox selType01">
+		<select class="selectCus">
+			<option value="">옵션1</option>
+			<option value="">옵션2</option>
+		</select>
+	</div>
+*/
+
+/* chatbot Layer popup */
+#chatbotArea {width:auto; height:72%; max-height:646px; display:inline-block; position:fixed; right:90px; bottom:128px; z-index:100; top:initial; left:initial; transform:none; -webkit-transform:none; background:none; display:none;}
+.chatbotInner {width:370px; height:100%; position:relative; border-radius:8px; -webkit-box-shadow:0px 2px 8px 2px rgba(0, 0, 0, 0.3); box-shadow:0px 2px 8px 2px rgba(0, 0, 0, 0.3); float:right; z-index:2;}
+.chatbotInner>.titArea {background-color:#e51937; border-radius:8px 8px 0 0; height:60px; position:relative;}
+.chatbotInner>.titArea .title {position:absolute; top:50%; -webkit-transform:translateY(-50%); transform:translateY(-50%); left:4.4%; font-size:0.938em; color:#fff;}
+.chatbotInner>.titArea .title span {font-weight:bold;}
+.chatbotInner>.titArea>a {width:50px; height:100%; display:block; float:right; position:relative; background:url(../images/ico_chatbot_btn_div.png?ver=1.0) repeat-y left;}
+.chatbotInner>.titArea>a img {display:inline-block; position: absolute; left:50%; top:50%; -webkit-transform:translateX(-50%) translateY(-50%); transform:translateX(-50%) translateY(-50%); z-index:3;}
+.chatbotInner>.converArea {position:absolute; top:0; left:0; padding:60px 0 54px; width:100%; height:100%;}
+.chatbotInner>.converArea>.converScr {position:relative;width:100%; height:100%; background-color:rgba(238,230,226, 0.95); border-bottom:1px solid #d1d1d1;  padding: 16px;overflow-y:auto;}
+.chatbotInner>.converArea>.converScr p {padding:0 44px !important; margin-bottom:15px;}
+.chatbotInner>.converArea>.converScr p:last-child {margin-bottom:0;}
+.chatbotInner>.converArea>.converScr .aibril {background:url(../images/ico_chatbot_msg_aibril.png?ver=1.0) no-repeat left top; background-size:auto 30px; text-align:left; padding:0 0 0 44px;}
+.chatbotInner>.converArea>.converScr .aibril span.box {padding:0; background-color:#fff; border-radius:0 14px 14px; font-size:0.813em; -webkit-box-shadow:0px 0px 1px 1px rgba(0, 0, 0, 0.1); box-shadow:0px 0px 1px 1px rgba(0, 0, 0, 0.1); /*border:2px solid #c2c2c2;*/}
+.chatbotInner>.converArea>.converScr .aibril span {display:inline-block; padding:10px 18px; line-height:1.35; word-break:keep-all;}
+.chatbotInner>.converArea>.converScr .aibril span a {display:inline-block; width:100%; padding:8px 16px 7px; border-top:1px dashed #c2c2c2; font-size:0.938em;}
+.chatbotInner>.converArea>.converScr .aibril span a img {margin-right:5px;}
+.chatbotInner>.converArea>.converScr .aibril span a img.arr {float:right; margin-top:3px; margin-right:0;}
+.chatbotInner>.converArea>.converScr .aibril span a:after {clear:both; content:''; display:block}
+.chatbotInner>.converArea>.converScr .aibril span.write {background:url(../images/ico_chatbot_msg_write.gif?ver=1.0) no-repeat center; width:80px; height:38px; display:inline-block;}
+.chatbotInner>.converArea>.converScr .user {background:url(../images/ico_chatbot_msg_user.png?ver=1.0) no-repeat right top; background-size:auto 30px; text-align:right; padding:0 44px 0 0;}
+.chatbotInner>.converArea>.converScr .user span {display:inline-block; padding:10px 18px; font-size:0.875em; line-height:1.35; word-break:keep-all; background-color:#a88470; border-radius:14px 0 14px 14px; color:#fff;}
+.userInputArea {width:100%; height:54px; line-height:3; background-color:#ffffff; border-radius:0 0 8px 8px; position:absolute; bottom:0; padding:10px 15px 0;}
+.userInputArea input {width:86%; height:32px; background-color:#fff; border:none; border-radius:16px; color:#9ca4aa; font-size:0.813em; padding:0 12px;}
+.userInputArea a {background:#e51937 url(../images/ico_chatbot_msg_add.png?ver=1.0) no-repeat 7px 7px; background-size:auto 20px; width:36px; height:34px; border-radius:50%; margin-left:10px; display:inline-block;}
+
+/* chatbot 기능 추가  20171020 */
+.chatbotInner>.converArea>.converScr .aibril .listBox {display: inline-block; margin-bottom: 12px; padding:0; background-color:#fff; border-radius:0 14px 14px; font-size:0.813em; -webkit-box-shadow:0px 0px 1px 1px rgba(0, 0, 0, 0.1); box-shadow:0px 0px 1px 1px rgba(0, 0, 0, 0.1); /*border:2px solid #c2c2c2;*/}
+.chatbotInner>.converArea>.converScr .aibril .listBox .ask{background-color:#f9f2f0;border-radius:0 14px 0px 0px; padding:0px !important; margin-bottom:0px;}
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection li { border-bottom:1px solid #f4efea;  background:url(../images/ico_chatbot_arr_right.png?ver=1.0) no-repeat 95% center; background-size:7px auto;}
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection li a em{font-style: normal; margin-right: 5px; color:#f58026;}
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection li a{display: inline-block; padding: 10px 40px 10px 18px; width:100%;}
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection li:last-child{ border-bottom:none;}
+/* selection2 생성*/
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection2 li { border-bottom:1px solid #f4efea;  background: no-repeat 95% center; background-size:7px auto;}
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection2 li a em{font-style: normal; margin-right: 5px; color:#f58026; text-align:center;}
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection2 li a{display: inline-block; padding: 10px 40px 10px 18px; width:100%; text-align:center;}
+.chatbotInner>.converArea>.converScr .aibril .listBox .selection2 li:last-child{ border-bottom:none;}
+
+.chatbotInner>.converArea> .tagArea {position:relative;}
+.chatbotInner>.converArea> .tagArea .closeLy{position: absolute; right:20px; bottom:111px; z-index: 9999;}
+.chatbotInner>.converArea> .tagArea .tagWrap{/*position:relative; top: calc(-81px - 16px - 24px); */ position: absolute; bottom:0px; text-align:center; background-color: rgba(242, 240, 238, 0.95); padding:10px 0px 10px; max-height:60px;}
+.chatbotInner>.converArea> .tagArea .taglist{padding: 0px 35px}
+.chatbotInner>.converArea> .tagArea .tagControl a{position: absolute;display: inline-block;width:12px; height:20px; font-size: 0px; text-indent: -99999px;}
+.chatbotInner>.converArea> .tagArea .tagControl .bx-next{position: absolute; right:17px; bottom:35%; background:url(../images/ico_chatbot_arr_right.png?ver=1.0) no-repeat left top; background-size:12px auto;}
+.chatbotInner>.converArea> .tagArea .tagControl .bx-prev{position: absolute; left:17px; bottom:35%; background:url(../images/ico_chatbot_arr_left.png?ver=1.0) no-repeat left top; background-size:12px auto;}
+.chatbotInner>.converArea> .tagArea .tagBox {display: inline-block; margin-right:3px; margin-bottom: 5px; width:auto !important}
+.chatbotInner>.converArea> .tagArea .tagBox a{border:1px solid #f36a00; background-color:#fff; border-radius:14px 0 14px 14px; color:#f36a00; font-size:0.813em; display: inline-block; padding:7px 10px;}
+.chatbotInner>.converArea> .tagArea .tagBox a span{padding:0px;  font-size:0.938em;}
+.chatbotInner>.converArea> .tagArea .taglist .bx-viewport{height:auto !important; margin-bottom:10px;}
+.chatbotInner>.converArea> .tagArea .bx-controls{text-align: center;}
+.chatbotInner>.converArea> .tagArea .bx-controls .bx-pager .bx-pager-item{display: inline-block; margin: 0 4px;}
+.chatbotInner>.converArea> .tagArea .bx-controls .bx-pager .bx-pager-item a{width:8px; height: 8px; background: #bdb9b6placeholder; border-radius: 50%; display: inline-block;font-size: 0px; text-indent: -99999px;}
+.chatbotInner>.converArea> .tagArea .bx-controls .bx-pager .bx-pager-item .active{background: #f58026;}
+
+
+.chatbotInner>.converArea2 {position:absolute; bottom:0; left:0; width:100%; height:10%;}
+
+.chatbotInner>.converArea2> .tagArea {position:relative;}
+.chatbotInner>.converArea2> .tagArea .closeLy{position: absolute; right:20px; bottom:111px; z-index: 9999;}
+.chatbotInner>.converArea2> .tagArea .tagWrap{/*position:relative; top: calc(-81px - 16px - 24px); */ position: absolute; bottom:0px; text-align:center; background-color: rgba(242, 240, 238, 0.95); padding:10px 0px 10px; max-height:60px;}
+.chatbotInner>.converArea2> .tagArea .taglist{padding: 0px 35px}
+.chatbotInner>.converArea2> .tagArea .tagControl a{position: absolute;display: inline-block;width:12px; height:20px; font-size: 0px; text-indent: -99999px;}
+.chatbotInner>.converArea2> .tagArea .tagControl .bx-next{position: absolute; right:17px; bottom:35%; background:url(../images/ico_chatbot_arr_right.png?ver=1.0) no-repeat left top; background-size:12px auto;}
+.chatbotInner>.converArea2> .tagArea .tagControl .bx-prev{position: absolute; left:17px; bottom:35%; background:url(../images/ico_chatbot_arr_left.png?ver=1.0) no-repeat left top; background-size:12px auto;}
+.chatbotInner>.converArea2> .tagArea .tagBox {display: inline-block; margin-right:3px; margin-bottom: 5px; width:auto !important}
+.chatbotInner>.converArea2> .tagArea .tagBox a{border:1px solid #f36a00; background-color:#fff; border-radius:14px 0 14px 14px; color:#f36a00; font-size:0.813em; display: inline-block; padding:7px 10px;}
+.chatbotInner>.converArea2> .tagArea .tagBox a span{padding:0px;  font-size:0.938em;}
+.chatbotInner>.converArea2> .tagArea .taglist .bx-viewport{height:auto !important; margin-bottom:10px;}
+.chatbotInner>.converArea2> .tagArea .bx-controls{text-align: center;}
+.chatbotInner>.converArea2> .tagArea .bx-controls .bx-pager .bx-pager-item{display: inline-block; margin: 0 4px;}
+.chatbotInner>.converArea2> .tagArea .bx-controls .bx-pager .bx-pager-item a{width:8px; height: 8px; background: #bdb9b6placeholder; border-radius: 50%; display: inline-block;font-size: 0px; text-indent: -99999px;}
+.chatbotInner>.converArea2> .tagArea .bx-controls .bx-pager .bx-pager-item .active{background: #f58026;}
+
+.chatbotInner>.converArea> .tagArea3 {height:60px; position:relative; padding-top:12.3%;}
+.chatbotInner>.converArea> .tagArea3 .closeLy{position: absolute; right:20px; bottom:111px; z-index: 9999;}
+.chatbotInner>.converArea> .tagArea3 .tagWrap{/*position:relative; top: calc(-81px - 16px - 24px); */ position: absolute; bottom:0px; text-align:center; background-color: rgba(242, 240, 238, 0.95); padding:10px 0px 10px; max-height:60px;}
+.chatbotInner>.converArea> .tagArea3 .taglist{padding: 0px 35px}
+.chatbotInner>.converArea> .tagArea3 .tagControl a{position: absolute;display: inline-block;width:12px; height:20px; font-size: 0px; text-indent: -99999px;}
+.chatbotInner>.converArea> .tagArea3 .tagControl .bx-next{position: absolute; right:17px; bottom:35%; background:url(../images/ico_chatbot_arr_right.png?ver=1.0) no-repeat left top; background-size:12px auto;}
+.chatbotInner>.converArea> .tagArea3 .tagControl .bx-prev{position: absolute; left:17px; bottom:35%; background:url(../images/ico_chatbot_arr_left.png?ver=1.0) no-repeat left top; background-size:12px auto;}
+.chatbotInner>.converArea> .tagArea3 .tagBox {display: inline-block; margin-right:3px; margin-bottom: 5px; width:auto !important}
+.chatbotInner>.converArea> .tagArea3 .tagBox a{border:1px solid #f36a00; background-color:#fff; border-radius:14px 0 14px 14px; color:#f36a00; font-size:0.813em; display: inline-block; padding:7px 10px;}
+.chatbotInner>.converArea> .tagArea3 .tagBox a span{padding:0px;  font-size:0.938em;}
+.chatbotInner>.converArea> .tagArea3 .taglist .bx-viewport{height:auto !important; margin-bottom:10px;}
+.chatbotInner>.converArea> .tagArea3 .bx-controls{text-align: center;}
+.chatbotInner>.converArea> .tagArea3 .bx-controls .bx-pager .bx-pager-item{display: inline-block; margin: 0 4px;}
+.chatbotInner>.converArea> .tagArea3 .bx-controls .bx-pager .bx-pager-item a{width:8px; height: 8px; background: #bdb9b6placeholder; border-radius: 50%; display: inline-block;font-size: 0px; text-indent: -99999px;}
+.chatbotInner>.converArea> .tagArea3 .bx-controls .bx-pager .bx-pager-item .active{background: #f58026;}
+
+
+
+.previewInner {width:auto; min-width:40px; padding-right:24px; height:100%; display:block; position:relative; float:left;  display:none;}
+.previewInner .bgArr {position:absolute; top:28px; right:14px; z-index:3;}
+.contArea {float:left; min-width:370px; width:640px; /*max-width:640px;*/ height:100%; display:block; position:relative; z-index:2; padding:4px; background:linear-gradient(45deg, #f58026, #e51937); -webkit-background:linear-gradient(45deg, #f58026, #e51937); border-radius:8px; -webkit-box-shadow:0px 2px 8px 2px rgba(0, 0, 0, 0.3); box-shadow:0px 2px 8px 2px rgba(0, 0, 0, 0.3);}
+.contArea a.prvArr {background:#f58026 url(../images/ico_chatbot_prv_arr.png?ver=1.0) no-repeat center; width:40px; height:40px; border-radius:50%; display:inline-block; position:absolute; left:0; bottom:-50px; z-index:1; -webkit-box-shadow:0px 2px 8px 2px rgba(0, 0, 0, 0.3); box-shadow:0px 2px 8px 2px rgba(0, 0, 0, 0.3);}
+.contDim {width:100%; height:100%; background:rgba(0,0,0, .75); -webkit-transition:.3s; transition:.3s; position:absolute; z-index:1; display:none;}
+.contDim.on {display:block;}
+.contDim img {position:absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); -webkit-transform:translateX(-50%) translateY(-50%);}
+.contInner {width:auto; height:100%; overflow-y:auto; background-color:#fff; border-radius:6px; padding:20px;}
+.contInner .default {width:300px; text-align:center; display:inline-block; position:absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); -webkit-transform:translateX(-50%) translateY(-50%);}
+.contInner .default h1 {background:#f5f5f5 url(../images/logo_3dText.png?ver=1.0) no-repeat center; background-size:70px auto; width:175px; height:175px; margin:0 auto; border-radius:50%;}
+.contInner .default p {width:100%; text-align:center; font-size:0.813em; margin-top:1em;}
+
+
+@media (max-width:1239px){
+
+	/* chatbot Layer popup */
+	#chatbotArea {right:54px;}
+	.contArea {width:480px; /*max-width:480px;*/}
+}
+/* Margin Style */
+	.m10 {margin:0 10px;}
+	/* margin-top */
+	.m0		 {margin:0 !important;}
+	.mt_1	 {margin-top:-1px !important;}
+	.mt0	 {margin-top:0 !important;}
+	.mt1	 {margin-top:1px !important;}
+	.mt2	 {margin-top:2px !important;}
+	.mt3	 {margin-top:3px !important;}
+	.mt4	 {margin-top:4px !important;}
+	.mt5	 {margin-top:5px !important;}
+	.mt6	 {margin-top:6px !important;}
+	.mt7	 {margin-top:7px !important;}
+	.mt8	 {margin-top:8px !important;}
+	.mt9	 {margin-top:9px !important;}
+	.mt10	 {margin-top:10px !important;}
+	.mt11	 {margin-top:11px !important;}
+	.mt12	 {margin-top:12px !important;}
+	.mt13	 {margin-top:13px !important;}
+	.mt14	 {margin-top:14px !important;}
+	.mt15	 {margin-top:15px !important;}
+	.mt16	 {margin-top:16px !important;}
+	.mt17	 {margin-top:17px !important;}
+	.mt18	 {margin-top:18px !important;}
+	.mt19	 {margin-top:19px !important;}
+	.mt20	 {margin-top:20px !important;}
+	.mt25	 {margin-top:25px !important;}
+	.mt30	 {margin-top:30px !important;}
+	.mt35	 {margin-top:35px !important;}
+	.mt40	 {margin-top:40px !important;}
+	.mt45	 {margin-top:45px !important;}
+	.mt50	 {margin-top:50px !important;}
+	.mt55	 {margin-top:55px !important;}
+	.mt60	 {margin-top:60px !important;}
+	.mt65	 {margin-top:65px !important;}
+	.mt70	 {margin-top:70px !important;}
+	.mt75	 {margin-top:75px !important;}
+	.mt80	 {margin-top:80px !important;}
+	.mt85	 {margin-top:85px !important;}
+	.mt90	 {margin-top:90px !important;}
+	.mt95	 {margin-top:95px !important;}
+	.mt100	 {margin-top:100px !important;}
+	.mt130	 {margin-top:130px !important;}
+
+	/* margin-bottom */
+	.mb0		 {margin-bottom:0 !important;}
+	.mb1		 {margin-bottom:1px !important;}
+	.mb2		 {margin-bottom:2px !important;}
+	.mb3		 {margin-bottom:3px !important;}
+	.mb4		 {margin-bottom:4px !important;}
+	.mb5		 {margin-bottom:5px !important;}
+	.mb6		 {margin-bottom:6px !important;}
+	.mb7		 {margin-bottom:7px !important;}
+	.mb8		 {margin-bottom:8px !important;}
+	.mb9		 {margin-bottom:9px !important;}
+	.mb10	 {margin-bottom:10px !important;}
+	.mb15	 {margin-bottom:15px !important;}
+	.mb18	 {margin-bottom:18px !important;}
+	.mb20	 {margin-bottom:20px !important;}
+	.mb25	 {margin-bottom:25px !important;}
+	.mb30	 {margin-bottom:30px !important;}
+	.mb35	 {margin-bottom:35px !important;}
+	.mb40	 {margin-bottom:40px !important;}
+	.mb50	 {margin-bottom:50px !important;}
+
+	/* margin-left */
+	.ml0		 {margin-left:0 !important;}
+	.ml1		 {margin-left:1px !important;}
+	.ml2		 {margin-left:2px !important;}
+	.ml3		 {margin-left:3px !important;}
+	.ml4		 {margin-left:4px !important;}
+	.ml5		 {margin-left:5px !important;}
+	.ml6		 {margin-left:6px !important;}
+	.ml7		 {margin-left:7px !important;}
+	.ml8		 {margin-left:8px !important;}
+	.ml9		 {margin-left:9px !important;}
+	.ml10		 {margin-left:10px !important;}
+	.ml11		 {margin-left:11px !important;}
+	.ml12		 {margin-left:12px !important;}
+	.ml13		 {margin-left:13px !important;}
+	.ml14		 {margin-left:14px !important;}
+	.ml15		 {margin-left:15px !important;}
+	.ml16		 {margin-left:16px !important;}
+	.ml17		 {margin-left:17px !important;}
+	.ml18		 {margin-left:18px !important;}
+	.ml19		 {margin-left:19px !important;}
+	.ml20		 {margin-left:20px !important;}
+	.ml25		 {margin-left:25px !important;}
+	.ml30		 {margin-left:30px !important;}
+	.ml35		 {margin-left:35px !important;}
+	.ml40		 {margin-left:40px !important;}
+	.ml50		 {margin-left:50px !important;}
+
+@media (max-width:1100px){
+	/* commonGnbWrap */
+	#commonGnb .menuWrap {}
+	#commonGnb .menuWrap ul.frontMenu > li,
+	#commonGnb .menuWrap ul.consoleMenu > li {margin:0 8px 2px; font-size:17px;}
+	#commonGnb .menuWrap ul.frontMenu > li .depth2.m_service {width:252px;}
+	#commonGnb .menuWrap ul.frontMenu > li .depth2 {padding-left:18px; padding-right:18px;}
+	#commonGnb .menuWrap ul.frontMenu > li .depth2 li a {font-size:14px;}
+	#commonGnb .menuWrap ul.consoleMenu.show li {margin:0 10px 2px; font-size:15px;}
+}
+
+@media (max-width:980px){
+	.mt45	 {margin-top:25px !important;}
+
+
+	/* chatbot Layer popup */
+	#chatbotArea {right:54px;}
+	.chatbotInner {width:320px;}
+	.chatbotInner>.titArea .title {font-size:0.875em;}
+	.chatbotInner>.converArea>.converScr {/*padding:14px;*/}
+	.chatbotInner>.converArea>.converScr p {padding:0 42px !important; margin-bottom:12px;}
+	.chatbotInner>.converArea>.converScr span {font-size:0.750em; padding:10px 12px;}
+	.userInputArea input {width:84%; font-size:0.750em;}
+
+	.contArea {min-width:320px; width:490px; /*max-width:490px;*/}
+
+}
+
+
+@media all and  (min-width:641px) {/*tablet*/
+	.mobile {display:none;}
+	br.mobr {display:none !important}
+}
+
+
+@media (max-width:640px){/*mobile*/
+	.mt15	 {margin-top:10px !important;}
+	.mt20	 {margin-top:8px !important;}
+	.mt30	 {margin-top:16px !important;}
+	.mt40	 {margin-top:20px !important;}
+	.mt45	 {margin-top:20px !important;}
+	.mt50	 {margin-top:30px !important;}
+	.mt60	 {margin-top:40px !important;}
+	.ml20	 {margin-left:14px !important;}
+	.mb20	 {margin-bottom:10px !important;}
+
+	/* chatbot */
+	#chatbot {}/*display:none;*/
+
+	/* chatbot Layer popup */
+	#chatbotArea {top:0; left:0;width:100%; height:100%; max-height:100%; bottom:0;}
+	.chatbotInner {width:100%;}
+
+	.previewInner {position:absolute; top:0; left:0; padding-right:0; width:100%;}
+	.previewInner a.prvBtn {right:40px; z-index:3;}
+	.previewInner .bgArr {display:none;}
+	.contArea {min-width:100%; width:100%; /*max-width:100%;*/ margin-left:0;}
+	.contArea a.prvArr {left:inherit; right:16px; bottom:16px;}
+
+	.selType01 .selType>.selTypeInner{font-size:12px;}
+
+}
+
+
+@media (max-width:320px){/*mobile*/
+	#subWrap .topCon .welcome .selectBox {width:208px;}
+	#subWrap .topCon p {font-size:0.875em; margin-right:12px;}
+
+	.layerArea.moment {height:424px;}
+	.layerArea.moment .contLy .moment_textBox p {line-height:1.4;}
+
+	#subWrap .visualTop.visualuserService .menuBox.longtxt{position:absolute; left:15px; padding:22px 0px; text-align:center; font-family:'SohoGothicPro', 'YoonGothic';}
+	#subWrap .visualTop.visualuserService .menuBox.longtxt h2 {font-size:20px; display:table-cell; text-align:center; vertical-align:middle;}
+  .chatbotInner>.converArea> .tagArea .closeLy{position: absolute; right:20px; bottom:148px;}
+}
